@@ -68,6 +68,7 @@ function rollDice() {
     document
       .getElementsByClassName(`player-${currentPlayer}-panel`)[0]
       .classList.add("active");
+    diceImg.style.visibility = "hidden";
   } else {
     var activePlayerScore = document.getElementById(`current-${currentPlayer}`);
     activePlayerScore.innerHTML =
