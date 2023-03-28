@@ -9,16 +9,71 @@ GAME RULES:
 
 */
 
+// Keeping track of the players scores
+var player0_current;
+var player1_current;
+var player0_score;
+var player1_score;
+
+// dice Image
+var diceImg = document.getElementsByClassName("dice")[0];
+
+// scores
+var score0 = document.getElementById("score-0");
+var current0 = document.getElementById("current-0");
+var score1 = document.getElementById("score-1");
+var current1 = document.getElementById("current-1");
+
+// current player index
+var currentPlayer;
+
 function init() {
   // initialize scores
-  document.getElementById("score-0").innerHTML = "0";
-  document.getElementById("current-0").innerHTML = "0";
-  document.getElementById("score-1").innerHTML = "0";
-  document.getElementById("current-1").innerHTML = "0";
+  player0_current = 0;
+  player1_current = 0;
+  player0_score = 0;
+  player1_score = 0;
+
+  // current player
+  currentPlayer = 0;
+
+  // initialize scores
+  score0.innerHTML = "0";
+  current0.innerHTML = "0";
+  score1.innerHTML = "0";
+  current1.innerHTML = "0";
 
   // hide the dice
-  document.getElementsByClassName("dice")[0].style.display = "none";
+  diceImg.style.visibility = "hidden";
 }
 
 // initialize scores whenever we start the game
 init();
+
+function rollDice() {
+  // current score
+  var randomDiceFace = Math.floor(Math.random() * 6 + 1);
+
+  // manipulating the dice image accordingly
+  diceImg.style.visibility = "visible";
+  diceImg.setAttribute("src", `./images/dice-${randomDiceFace}.png`);
+
+  //   manipulating scores accordingly
+  if (randomDiceFace === 1) {
+    document.getElementsByClassName("active")[0].classList.remove("active");
+    if (currentPlayer === 0) {
+      currentPlayer = 1;
+      current0.innerHTML = "0";
+    } else {
+      currentPlayer = 0;
+      current1.innerHTML = "0";
+    }
+    document
+      .getElementsByClassName(`player-${currentPlayer}-panel`)[0]
+      .classList.add("active");
+  } else {
+    var activePlayerScore = document.getElementById(`current-${currentPlayer}`);
+    activePlayerScore.innerHTML =
+      parseInt(activePlayerScore.innerHTML) + parseInt(randomDiceFace);
+  }
+}
