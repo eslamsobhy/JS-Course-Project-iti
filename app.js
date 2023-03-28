@@ -25,6 +25,15 @@ function init() {
   // current player
   currentPlayer = 0;
 
+  // make player one is the active player
+  var activePlayer = document.getElementsByClassName("active")[0];
+  if (activePlayer.classList.contains("player-1-panel")) {
+    activePlayer.classList.remove("active");
+    document
+      .getElementsByClassName("player-0-panel")[0]
+      .classList.add("active");
+  }
+
   // initialize scores
   score0.innerHTML = "0";
   current0.innerHTML = "0";
