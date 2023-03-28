@@ -9,12 +9,6 @@ GAME RULES:
 
 */
 
-// Keeping track of the players scores
-var player0_current;
-var player1_current;
-var player0_score;
-var player1_score;
-
 // dice Image
 var diceImg = document.getElementsByClassName("dice")[0];
 
@@ -28,12 +22,6 @@ var current1 = document.getElementById("current-1");
 var currentPlayer;
 
 function init() {
-  // initialize scores
-  player0_current = 0;
-  player1_current = 0;
-  player0_score = 0;
-  player1_score = 0;
-
   // current player
   currentPlayer = 0;
 
@@ -74,6 +62,6 @@ function rollDice() {
   } else {
     var activePlayerScore = document.getElementById(`current-${currentPlayer}`);
     activePlayerScore.innerHTML =
-      parseInt(activePlayerScore.innerHTML) + parseInt(randomDiceFace);
+      parseInt(activePlayerScore.innerHTML) + randomDiceFace;
   }
 }
