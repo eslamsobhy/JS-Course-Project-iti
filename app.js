@@ -75,3 +75,29 @@ function rollDice() {
       parseInt(activePlayerScore.innerHTML) + randomDiceFace;
   }
 }
+
+function hold() {
+  // changing the active player
+  if (currentPlayer === 0) {
+    currentPlayer = 1;
+    score0.innerHTML =
+      parseInt(score0.innerHTML) + parseInt(current0.innerHTML);
+    current0.innerHTML = "0";
+    if (parseInt(score0.innerHTML) >= 20) {
+      score0.innerHTML = "WINNER!!!";
+    }
+  } else {
+    currentPlayer = 0;
+    score1.innerHTML =
+      parseInt(score1.innerHTML) + parseInt(current1.innerHTML);
+    current1.innerHTML = "0";
+    if (parseInt(score1.innerHTML) >= 20) {
+      score1.innerHTML = "WINNER!!!";
+    }
+  }
+  document.getElementsByClassName("active")[0].classList.remove("active");
+  document
+    .getElementsByClassName(`player-${currentPlayer}-panel`)[0]
+    .classList.add("active");
+  diceImg.style.visibility = "hidden";
+}
