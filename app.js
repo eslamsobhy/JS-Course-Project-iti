@@ -9,6 +9,10 @@ GAME RULES:
 
 */
 
+// buttons
+var holdBtn = document.getElementsByClassName("btn-hold")[0];
+var rollBtn = document.getElementsByClassName("btn-roll")[0];
+
 // dice Image
 var diceImg = document.getElementsByClassName("dice")[0];
 
@@ -22,6 +26,10 @@ var current1 = document.getElementById("current-1");
 var currentPlayer;
 
 function init() {
+  // showing the buttons
+  rollBtn.style.visibility = "visible";
+  holdBtn.style.visibility = "visible";
+
   // current player
   currentPlayer = 0;
 
@@ -84,7 +92,9 @@ function hold() {
       parseInt(score0.innerHTML) + parseInt(current0.innerHTML);
     current0.innerHTML = "0";
     if (parseInt(score0.innerHTML) >= 20) {
-      score0.innerHTML = "WINNER!!!";
+      score0.innerHTML = "WINNER!";
+      rollBtn.style.visibility = "hidden";
+      holdBtn.style.visibility = "hidden";
     }
   } else {
     currentPlayer = 0;
@@ -92,7 +102,9 @@ function hold() {
       parseInt(score1.innerHTML) + parseInt(current1.innerHTML);
     current1.innerHTML = "0";
     if (parseInt(score1.innerHTML) >= 20) {
-      score1.innerHTML = "WINNER!!!";
+      score1.innerHTML = "WINNER!";
+      rollBtn.style.visibility = "hidden";
+      holdBtn.style.visibility = "hidden";
     }
   }
   document.getElementsByClassName("active")[0].classList.remove("active");
