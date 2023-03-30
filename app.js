@@ -91,7 +91,7 @@ function hold() {
     score0.innerHTML =
       parseInt(score0.innerHTML) + parseInt(current0.innerHTML);
     current0.innerHTML = "0";
-    if (parseInt(score0.innerHTML) >= 20) {
+    if (parseInt(score0.innerHTML) >= 50) {
       score0.innerHTML = "WINNER!";
       rollBtn.style.visibility = "hidden";
       holdBtn.style.visibility = "hidden";
